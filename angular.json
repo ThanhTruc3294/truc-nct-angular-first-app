@@ -3,6 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
+
     "my-first-app": {
       "projectType": "application",
       "schematics": {
