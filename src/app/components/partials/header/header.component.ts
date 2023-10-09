@@ -7,7 +7,6 @@ import { CartService } from 'src/app/services/cart.service';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
-
   cartQuantity=0;
   constructor(cartService:CartService) {
     cartService.getCartObservable().subscribe((newCart) => {

@@ -5,7 +5,13 @@
   resetLinkText="Go To Homepage"
 ></app-not-found>
 <div *ngIf="cart && cart.items.length" class="container">
-<ul>
+
+  <app-card
+    (removeFromCart)="removeFromCart($any($event))"
+    (outChangeQuantity)="changeQuantity($any($event))" style="display: flex; flex: 3 0"
+    [cards]="cart.items"></app-card>
+  <!-- <ng-template app-card [cards]="cart.items"></ng-template> -->
+<!-- <ul>
   <li *ngFor="let cartItem of cart.items">
     <div>
       <img [src]="cartItem.food.imageUrl" [alt]="cartItem.food.name">
@@ -36,7 +42,7 @@
       </button>
     </div>
   </li>
-</ul>
+</ul> -->
 <div class="checkout">
   <div>
     <div class="foods-count">{{cart.totalCount}}</div>

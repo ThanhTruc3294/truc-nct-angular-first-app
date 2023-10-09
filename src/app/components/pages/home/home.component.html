@@ -1,5 +1,5 @@
 <app-search></app-search>
-<app-tags></app-tags>
+<app-tags *ngIf="tags" [tags]="tags"></app-tags>
 <app-not-found
 [visible]="!foods || !foods.length"
 resetLinkText="Reset Search">

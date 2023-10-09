@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CartService } from 'src/app/services/cart.service';
-import { FoodService } from 'src/app/services/food.service';
+import { FoodService,  } from 'src/app/services/food.service';
 import { Food } from 'src/app/shared/models/Food';
 
 @Component({
