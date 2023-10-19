@@ -11,19 +11,37 @@ import { Food } from 'src/app/shared/models/Food';
 })
 export class FoodPageComponent implements OnInit {
   food!: Food;
-  constructor(activatedRoute:ActivatedRoute, foodService:FoodService,
+  allFood: Food[] = [];
+  id: string = '';
+  listFoods = []
+
+
+  listSub = [];
+  constructor(activatedRoute:ActivatedRoute, private foodService:FoodService,
     private cartService:CartService, private router: Router) {
     activatedRoute.params.subscribe((params) => {
       if(params['id'])
-      this.food = foodService.getFoodById(params['id']);
+      // this.food = foodService.getFoodById(params['id']);
+      this.food = this.allFood.find(f => f.id == params['id']) || new Food();
+      this.id = params['id'];
     })
-   }
+  }
 
   ngOnInit(): void {
+    this.foodService.getAllFood().subscribe((food: Food[]) => {
+      this.allFood = food;
+      this.food = this.allFood.find(f => f.id == this.id) || new Food();
+    })
+
+
   }
 
   addToCart(){
     this.cartService.addToCart(this.food);
     this.router.navigateByUrl('/cart-page');
+  }
+
+  addFood(food: number) {
+    this.foodService.loadFood(food);
   }
 }

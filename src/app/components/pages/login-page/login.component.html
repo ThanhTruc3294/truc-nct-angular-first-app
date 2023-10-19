@@ -1,0 +1,33 @@
+<!-- <div class="container d-flex flex-column" style="height: calc(100vh - 200px);">
+  <h1>Login: {{username}} : {{password}}</h1>
+  <div class="card">
+      <form (ngSubmit)="onSubmit()">
+          <input type="text" [(ngModel)]="username"  name="username" placeholder="Username">
+          <input type="password" [(ngModel)]="password" name="password" placeholder="Password">
+          <div class="buttons">
+              <button type="button" (click)="setValue()" class="login-button">Set Value</button>
+              <button type="submit" class="login-button">Login</button>
+          </div>
+      </form>
+  </div>
+</div> -->
+<div class="container d-flex flex-column" style="height: calc(100vh - 200px);">
+  <h1>Login</h1>
+
+  <div class="card">
+      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+          <input type="text" formControlName="username"  placeholder="Username">
+          <div class="error" *ngIf="loginForm.get('username')!.hasError('required') && isSubmit">
+            Username is required
+          </div>
+          <input type="password" formControlName="password" placeholder="Password">
+          <div class="error" *ngIf="loginForm.get('password')!.hasError('required') && isSubmit">
+            Password is required
+          </div>
+          <div class="buttons">
+              <button type="submit" class="login-button">Login</button>
+          </div>
+      </form>
+  </div>
+</div>
+

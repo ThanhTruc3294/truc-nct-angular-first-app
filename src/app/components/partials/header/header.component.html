@@ -5,14 +5,14 @@
     <nav>
       <ul>
         <li>
-          <a routerLink="/login">Đăng nhập</a>
+          <a *ngIf="!isLogin" routerLink="/login">Đăng nhập</a>
         </li>
         <li class="menu-container">
-          <a routerLink="/dashboard">Profile</a>
+          <a>Profile</a>
           <div class="menu">
             <a routerLink="/profile">Thông tin cá nhân</a>
             <a routerLink="/orders">Đơn hàng</a>
-            <a>Đăng xuất</a>
+            <a *ngIf="isLogin" (click)="logout()">Đăng xuất</a>
           </div>
         </li>
         <li>
